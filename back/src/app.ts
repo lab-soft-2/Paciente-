@@ -1,40 +1,27 @@
-import express from 'express'
-import { env } from './config/env'
-import {Database} from './core/database/database'
-import {logger} from './config/logger'
+import { AppDataSource } from "./data-source";
+import * as express from "express";
+import * as dotenv from "dotenv";
+import { Request, Response } from "express";
+import { patientRouter } from "./routes/patient.routes";
+import "reflect-metadata";
+dotenv.config();
 
-const PORT = env.serverPort
-const log = logger({ context: 'App' })
-
-async function main() {
-	const app = express()
-	const db = Database.getInstance()
-
-	await db.connect()
-	log.info('Database connected successfully!')
-
-	app.get(`/${env.appName}/health`, (req, res) => {
-		return res.status(200).send()
-	})
-
-	app.get('/', (req, res) => {
-		res.send('Hello World!')
-	})
-
-	app.get('/home', (req, res) => {
-		res.send('Hello World!2')
-	})
+const app = express();
+app.use(express.json());
+app.use(errorHandler);
+const { PORT = 3000 } = process.env;
+app.use("/patient", patientRouter);
 
 
-	app.listen(PORT, () => {
-		console.log(`Server running on port ${PORT}`)
-	})
-}
+app.get("*", (req: Request, res: Response) => {
+  res.status(505).json({ message: "Bad Request" });
+});
 
-
-
-main().catch(error => {
-	log.error('catch main application')
-	log.error(error)
-	process.exit(1)
-})
+AppDataSource.initialize()
+  .then(async () => {
+    app.listen(PORT, () => {
+      console.log("Server is running on http://localhost:" + PORT);
+    });
+    console.log("Data Source has been initialized!");
+  })
+  .catch((error) => console.log(error));
