@@ -22,6 +22,7 @@ ENV NODE_ENV production
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY --from=dependencies /app/package.json ./package.json
 COPY --from=builder /app/dist ./dist
+RUN npm run migration
 
 EXPOSE 3000
 
