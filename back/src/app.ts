@@ -8,6 +8,7 @@ import "reflect-metadata";
 dotenv.config();
 
 const app = express();
+console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA');
 app.use(express.json());
 app.use(errorHandler);
 const { PORT = 3000 } = process.env;
