@@ -11,6 +11,7 @@ FROM node:21.5.0-alpine3.18 as builder
 WORKDIR /app
 COPY . .
 COPY --from=dependencies /app/node_modules ./node_modules
+RUN npm install winston
 RUN npm run build
 
 # Production image, copy all the files and run the app
