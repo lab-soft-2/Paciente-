@@ -10,8 +10,5 @@ Router.get(
 
 Router.post("/signup", PatientController.signup);
 
-Router.delete(
-  "/delete/:id",
-  PatientController.deleteUser
-);
+
 export { Router as patientRouter };
