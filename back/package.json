@@ -24,11 +24,13 @@
     "typeorm": "0.3.17"
   },
   "scripts": {
-    "watch": "tsc -w",
-    "dev": "nodemon build/index.js",
-    "start:dev": "concurrently \"tsc -w\" \"nodemon build/index.js\"",
+    "start": "node dist/app.js",
+    "dev": "ts-node src/app.ts",
     "build": "tsc",
-    "start": "ts-node src/index.ts",
+    "watch": "tsc -w",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "typeorm": "typeorm-ts-node-commonjs",
     "migration create":"typeorm migration:create ./migrations/patients",
     "migration": " npm run typeorm migration:run -- -d ./src/data-source.ts"
