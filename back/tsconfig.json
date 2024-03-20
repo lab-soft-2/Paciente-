@@ -5,11 +5,8 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "esModuleInterop": true,
-    "strictPropertyInitialization":false,
-    "emitDecoratorMetadata": true,
     "strict": true,
-    "noImplicitAny": false,
-    "experimentalDecorators": true
+    "noImplicitAny": false
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build"]
