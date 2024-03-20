@@ -1,5 +1,5 @@
 import { AppDataSource } from "./data-source";
-import * as express from "express";
+import * as express from 'express';
 import * as dotenv from "dotenv";
 import { Request, Response } from "express";
 import { patientRouter } from "./routes/patient.routes";
@@ -7,7 +7,7 @@ import { errorHandler } from "./middleware/errorHandler";
 import "reflect-metadata";
 dotenv.config();
 
-const app = express();
+const app = express.default();
 app.use(express.json());
 app.use(errorHandler);
 const { PORT = 3000 } = process.env;
