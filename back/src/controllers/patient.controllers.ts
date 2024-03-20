@@ -6,6 +6,8 @@ import * as cache from "memory-cache";
 
 export class PatientController {
   static async signup(req: Request, res: Response) {
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA');
+    console.log('req');
     const { name, email, password, role } = req.body;
     const encryptedPassword = await encrypt.encryptpass(password);
     const user = new Patient();
@@ -17,12 +19,11 @@ export class PatientController {
     const userRepository = AppDataSource.getRepository(Patient);
     await userRepository.save(user);
 
-    // userRepository.create({ Name, email, password });
-    const token = encrypt.generateToken({ id: user.id });
+
 
     return res
       .status(200)
-      .json({ message: "User created successfully", token, user });
+      .json({ message: "User created successfully", user });
   }
 
   static async getUsers(req: Request, res: Response) {
@@ -44,27 +45,5 @@ export class PatientController {
     }
   }
 
-  static async updateUser(req: Request, res: Response) {
-    const { id } = req.params;
-    const { name, email } = req.body;
-    const userRepository = AppDataSource.getRepository(Patient);
-    const user = await userRepository.findOne({
-      where: { id },
-    });
-    user.name = name;
-    user.email = email;
-    await userRepository.save(user);
-    res.status(200).json({ message: "udpdate", user });
-  }
-
-  static async deleteUser(req: Request, res: Response) {
-    const { id } = req.params;
-    const userRepository = AppDataSource.getRepository(Patient);
-    const user = await userRepository.findOne({
-      where: { id },
-    });
-    await userRepository.remove(user);
-    res.status(200).json({ message: "ok" });
-  }
 
 }

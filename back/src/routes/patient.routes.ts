@@ -6,10 +6,8 @@ Router.get(
   "/users",
   PatientController.getUsers
 );
-Router.get(
-  "/profile",
-  AuthController.getProfile
-);
+
+
 Router.post("/signup", PatientController.signup);
 
 Router.delete(

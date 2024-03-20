@@ -33,6 +33,6 @@ import {
     condition: string;
 
     @Column({ default: 5 })
-    score: int;
+    score: number;
  
   }
