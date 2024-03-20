@@ -3,6 +3,7 @@ import * as express from "express";
 import * as dotenv from "dotenv";
 import { Request, Response } from "express";
 import { patientRouter } from "./routes/patient.routes";
+import { errorHandler } from "./middleware/errorHandler";
 import "reflect-metadata";
 dotenv.config();
 
