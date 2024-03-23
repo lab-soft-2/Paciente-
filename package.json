@@ -10,9 +10,11 @@
     "watch": "tsc -w",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "migration:create": "db-migrate -m ./src/core/database/migrations --config ./src/core/database/config.json --sql-file -e development create",
-    "migration:down": "db-migrate -m ./src/core/database/migrations --config ./src/core/database/config.json down",
-    "migration:up": "db-migrate -m ./src/core/database/migrations --config ./src/core/database/config.json up",
+    "typeorm": "TYPEORM_CLI=true typeorm-ts-node-commonjs",
+    "typeorm:ds": "npm run typeorm -- -d ./src/config/db/data-source.ts",
+    "typeorm:migration:generate": "npm run typeorm:ds migration:generate -- src/config/db/migration/$npm_config_migration_name",
+    "typeorm:migration:create": "npm run typeorm migration:create -- src/config/db/migration/$npm_config_migration_name",
+    "typeorm:migration:run": "npm run typeorm:ds migration:run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -24,6 +26,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.18.2",
     "pg": "^8.11.3",
+    "typeorm": "^0.3.20",
     "winston": "^3.11.0"
   },
   "devDependencies": {
