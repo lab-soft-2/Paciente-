@@ -39,7 +39,7 @@ export class PatientRepository {
 		console.log(JSON.stringify(patient, null, "  "));
 		console.log(JSON.stringify(condition, null, "  "));
 		console.log(JSON.stringify(patient.condition, null, "  "));
-		return await this.db.save(patient)
+		return await this.db.save(patient.condition)
 	}
 
 	async deleteByEmail(email: string) {
