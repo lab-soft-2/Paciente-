@@ -39,19 +39,19 @@ export class PatientRepository {
 		// return await this.db.save(patient)
 	}
 
-	async updateCondition(email: string, condition: string): Promise<Patient> {
-		// patient.condition = condition
-		// console.log(JSON.stringify(patient, null, "  "));
-		// console.log(JSON.stringify(condition, null, "  "));
-		// console.log(JSON.stringify(patient.condition, null, "  "));
+	async updateCondition(patient: Patient,condition:string): Promise<Patient> {
+		patient.condition = condition
+		console.log(JSON.stringify(patient, null, "  "));
+		console.log(JSON.stringify(condition, null, "  "));
+		console.log(JSON.stringify(patient.condition, null, "  "));
+		return await this.db.save(patient)
 
-		return await this.db.query(`
-			UPDATE  patients
-			SET condition = $1
-			WHERE email = $2;
-		`, [condition, email])
+		// return await this.db.query(`
+		// 	UPDATE  patients
+		// 	SET condition = $1
+		// 	WHERE email = $2;
+		// `, [condition, email])
 
-		// return await this.db.save(patient)
 	}
 
 	async deleteByEmail(email: string) {
