@@ -54,6 +54,7 @@ export class PatientController {
     }
 
     static async updatePatientCondition(req: Request, res: Response) {
+        const log = logger({ context: 'App' })
 
         const { email,  condition } = req.body;
 
@@ -71,6 +72,7 @@ export class PatientController {
     }
 
     static async updatePatientScore(req: Request, res: Response) {
+        const log = logger({ context: 'App' })
 
         const { email, score } = req.body;
 
