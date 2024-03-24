@@ -33,6 +33,15 @@ export class PatientController {
         return res.status(200).json(entity)
     }
 
+    static async getAll(req: Request, res: Response) {
+
+        const repository = new PatientRepository(getRepository(Patient))
+
+        const entity = await repository.findAll()
+
+        return res.status(200).json(entity)
+    }
+
     static async deleteByEmail(req: Request, res: Response) {
 
         const { email } = req.body;

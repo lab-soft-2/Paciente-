@@ -4,7 +4,7 @@ import { Patient } from './entity'
 export class PatientRepository {
 	constructor(private readonly db: Repository<Patient>) {}
 
-	async findAll(): Promise<Patient | undefined> {
+	async findAll(): Promise<Patient[] | undefined> {
 		return await this.db.find()
 	}
 
