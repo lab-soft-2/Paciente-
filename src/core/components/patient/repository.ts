@@ -30,4 +30,9 @@ export class PatientRepository {
 		return await this.db.delete({ email: email })
 	}
 
+	async update(patient: Patient): Promise<Patient | undefined> {
+		
+		return await this.db.save(patient)
+	}
+
 }

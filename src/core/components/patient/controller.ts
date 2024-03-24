@@ -53,6 +53,25 @@ export class PatientController {
         return res.status(200).json(entity)
     }
 
+    static async updatePatient(req: Request, res: Response) {
+
+        const { email, password, name, conditions, score } = req.body;
+
+        const repository = new PatientRepository(getRepository(Patient))
+
+        const entity = await repository.findOneByEmail(email)
+
+        for ([key, value] of Object.entries(req.body)) {
+            if (key == 'password' || key == 'name' || key == 'conditions' || key == 'score') {
+                entity[key] = value
+            }
+        }
+
+        const entity = await repository.save(entity)
+
+        return res.status(200).json(entity)
+    }
+
 
 
 }

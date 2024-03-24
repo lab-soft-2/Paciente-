@@ -17,6 +17,11 @@ Router.post(
   PatientController.deleteByEmail
 );
 
+Router.post(
+  "/user/update",
+  PatientController.updatePatient
+);
+
 
 Router.post("/signup", PatientController.signup);
 
