@@ -18,8 +18,12 @@ Router.post(
 );
 
 Router.post(
-  "/user/update",
-  PatientController.updatePatient
+  "/user/update/condition",
+  PatientController.updatePatientCondition
+);
+Router.post(
+  "/user/update/score",
+  PatientController.updatePatientScore
 );
 
 

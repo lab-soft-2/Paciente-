@@ -53,19 +53,15 @@ export class PatientController {
         return res.status(200).json(entity)
     }
 
-    static async updatePatient(req: Request, res: Response) {
+    static async updatePatientCondition(req: Request, res: Response) {
 
-        const { email, password, name, conditions, score } = req.body;
+        const { email,  condition } = req.body;
 
         const repository = new PatientRepository(getRepository(Patient))
 
         const entity = await repository.findOneByEmail(email)
         if(entity){
-            for (let key in Object.entries(req.body)) {
-                if (key == 'password' || key == 'name' || key == 'conditions' || key == 'score') {
-                    entity[key] = req.body[key]
-                }
-            }
+            entity.condition = condition ?? {}
     
             await repository.create(entity)
             return res.status(200).json(entity)
@@ -73,6 +69,20 @@ export class PatientController {
         return res.status(400).json({"erro":"paciente nao encontrado"})
     }
 
+    static async updatePatientScore(req: Request, res: Response) {
 
+        const { email, score } = req.body;
+
+        const repository = new PatientRepository(getRepository(Patient))
+
+        const entity = await repository.findOneByEmail(email)
+        if(entity){
+            entity.score = score ?? {}
+    
+            await repository.create(entity)
+            return res.status(200).json(entity)
+        }
+        return res.status(400).json({"erro":"paciente nao encontrado"})
+    }
 
 }
