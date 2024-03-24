@@ -2,7 +2,7 @@ import {DataSource, EntityTarget, ObjectLiteral, Repository} from 'typeorm'
 import { env } from '../env'
 
 export const MainDataSource = new DataSource({
-	host: process.env.TYPEORM_HOST ?? '127.0.0.1',
+	host: process.env.TYPEORM_HOST ?? 'localhost',
 	port: Number(process.env.TYPEORM_PORT ?? '5432'),
 	username: process.env.TYPEORM_USERNAME ?? 'postgres',
 	password: process.env.TYPEORM_PASSWORD ?? 'postgres',
