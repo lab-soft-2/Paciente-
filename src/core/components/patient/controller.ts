@@ -63,7 +63,7 @@ export class PatientController {
         if(entity && condition){
             entity.condition = condition
     
-            repository.update(entity.id,entity)
+            repository.update(entity)
             return res.status(200).json(entity)
         }
         return res.status(400).json({"erro":"paciente nao encontrado ou condicao nao enviada"})
@@ -79,7 +79,7 @@ export class PatientController {
         if(entity && score){
             entity.score = score
     
-            repository.update(entity.id,entity)
+            repository.update(entity)
             return res.status(200).json(entity)
         }
         return res.status(400).json({"erro":"paciente nao encontrado ou score nao enviado"})

@@ -27,7 +27,7 @@ export class PatientRepository {
 	}
 
 	async update (patient: Patient): Promise<Patient> {
-		return await this.db.update(patient)
+		return await this.db.update(patient.id,patient)
 	}
 
 	async deleteByEmail (email: string) {
