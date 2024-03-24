@@ -4,7 +4,11 @@ import { Patient } from './entity'
 export class PatientRepository {
 	constructor(private readonly db: Repository<Patient>) {}
 
-	async findOneById(id: string): Promise<Patient | undefined> {
+	async findAll(): Promise<Patient | undefined> {
+		return await this.db.find()
+	}
+
+	async findOneById(id: string): Promise<Patient[] | undefined> {
 		return await this.db.findOne({
 			where: {
 				id
@@ -20,6 +24,10 @@ export class PatientRepository {
 
 	async create (patient: Patient): Promise<Patient> {
 		return await this.db.save(patient)
+	}
+
+	async deleteByEmail (email: string) {
+		return await this.db.delete({ email: email })
 	}
 
 }
