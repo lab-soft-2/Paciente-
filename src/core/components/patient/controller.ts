@@ -60,16 +60,17 @@ export class PatientController {
         const repository = new PatientRepository(getRepository(Patient))
 
         const entity = await repository.findOneByEmail(email)
-
-        for (let key in Object.entries(req.body)) {
-            if (key == 'password' || key == 'name' || key == 'conditions' || key == 'score') {
-                entity[key] = req.body[key]
+        if(entity){
+            for (let key in Object.entries(req.body)) {
+                if (key == 'password' || key == 'name' || key == 'conditions' || key == 'score') {
+                    entity[key] = req.body[key]
+                }
             }
+    
+            await repository.save(entity)
+            return res.status(200).json(entity)
         }
-
-        await repository.save(entity)
-
-        return res.status(200).json(entity)
+        return res.status(400).json({"erro":"paciente nao encontrado"})
     }
 
 
