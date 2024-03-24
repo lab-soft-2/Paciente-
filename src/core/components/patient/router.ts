@@ -12,7 +12,7 @@ Router.get(
   PatientController.getAll
 );
 
-Router.get(
+Router.post(
   "/user/delete/email",
   PatientController.deleteByEmail
 );
