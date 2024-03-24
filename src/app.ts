@@ -16,6 +16,7 @@ const log = logger({ context: 'App' })
 
 async function main() {
 	const app = express()
+	app.use(express.json())
 
 	await MainDataSource.initialize()
 	log.info('Database connected successfully!')
