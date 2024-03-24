@@ -83,7 +83,7 @@ export class PatientController {
             entity.score = Number(score)
             log.info(score)
             log.info(entity.score)
-            
+            console.log(JSON.stringify(entity, null, "  "));
             const newPatient = await repository.update(entity)
             console.log(JSON.stringify(newPatient, null, "  "));
             return res.status(200).json(newPatient)
