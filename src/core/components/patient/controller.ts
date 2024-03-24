@@ -60,7 +60,7 @@ export class PatientController {
         const repository = new PatientRepository(getRepository(Patient))
 
         const entity = await repository.findOneByEmail(email)
-        if(entity){
+        if(entity?.email == email){
             entity.condition = condition ?? {}
     
             await repository.create(entity)
@@ -76,7 +76,7 @@ export class PatientController {
         const repository = new PatientRepository(getRepository(Patient))
 
         const entity = await repository.findOneByEmail(email)
-        if(entity){
+        if(entity?.email == email){
             entity.score = score ?? {}
     
             await repository.create(entity)
