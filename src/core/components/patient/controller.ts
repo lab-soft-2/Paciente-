@@ -79,8 +79,7 @@ export class PatientController {
 
         const patient = await repository.findOneByEmail(email)
         if(patient && score){
-            patient.score = Number(score)
-            patient.name = 'Number(score)'
+            patient.score = score
             
             console.log(JSON.stringify(patient, null, "  "));
             
