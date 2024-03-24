@@ -65,7 +65,7 @@ export class PatientController {
             entity.condition = condition
             log.info(condition)
             log.info(entity.condition)
-            repository.update(entity)
+            // repository.update(entity)
             return res.status(200).json(entity)
         }
         return res.status(400).json({"erro":"paciente nao encontrado ou condicao nao enviada"})
