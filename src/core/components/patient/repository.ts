@@ -26,7 +26,13 @@ export class PatientRepository {
 		return await this.db.save(patient)
 	}
 
-	async update( patient: Patient): Promise<Patient> {
+	async updateScore(patient: Patient, score: number): Promise<Patient> {
+		patient.score = score
+		return await this.db.save(patient)
+	}
+
+	async updateCondition(patient: Patient, condition: number): Promise<Patient> {
+		patient.condition = condition
 		return await this.db.save(patient)
 	}
 

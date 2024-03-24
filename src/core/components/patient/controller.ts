@@ -64,7 +64,7 @@ export class PatientController {
         if(patient && condition){
             patient.condition = condition
             console.log(JSON.stringify(condition, null, "  "));
-            repository.update(patient)
+            repository.updateCondition(patient,condition)
             return res.status(200).json(patient)
         }
         return res.status(400).json({"erro":"paciente nao encontrado ou condicao nao enviada"})
