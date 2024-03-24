@@ -21,8 +21,7 @@ export class Exame {
 		file?: string
 
     
-    constructor(profissional: string, paciente: string) {
+    constructor( paciente: string) {
     	this.paciente = paciente
-    	this.profissional = profissional
     }
 }
