@@ -8,7 +8,7 @@ export class PatientRepository {
 		return await this.db.find()
 	}
 
-	async findOneById(id: string): Promise<Patient[] | undefined> {
+	async findOneById(id: string): Promise<Patient | undefined> {
 		return await this.db.findOne({
 			where: {
 				id
