@@ -67,7 +67,7 @@ export class PatientController {
                 }
             }
     
-            await repository.save(entity)
+            await repository.create(entity)
             return res.status(200).json(entity)
         }
         return res.status(400).json({"erro":"paciente nao encontrado"})
