@@ -13,11 +13,11 @@ export class PatientController {
         // log.info('Database connected successfully!')
 
         const { name, email, password } = req.body;
-        log.info(req)
-        log.info( req.body)
-        log.info(name)
-        console.dir(req.body, { depth: null })
-        console.dir(name, { depth: null })
+        // log.info(req)
+        // log.info( req.body)
+        // log.info(name)
+        console.dir(req, { depth: null })
+        // console.dir(name, { depth: null })
         const repository = new PatientRepository(getRepository(Patient))
 
         // const patient = new Patient('testeRota@foi.com','testeRota@foi.com','testeRota@foi.com');
