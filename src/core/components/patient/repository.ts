@@ -28,11 +28,15 @@ export class PatientRepository {
 
 	async updateScore(patient: Patient, score: number): Promise<Patient> {
 		patient.score = score
+		console.log(JSON.stringify(patient, null, "  "));
+		console.log(JSON.stringify(score, null, "  "));
 		return await this.db.save(patient)
 	}
 
 	async updateCondition(patient: Patient, condition: string): Promise<Patient> {
 		patient.condition = condition
+		console.log(JSON.stringify(patient, null, "  "));
+		console.log(JSON.stringify(condition, null, "  "));
 		return await this.db.save(patient)
 	}
 

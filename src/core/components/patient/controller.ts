@@ -63,7 +63,7 @@ export class PatientController {
         const patient = await repository.findOneByEmail(email)
         if(patient && condition){
             patient.condition = condition
-            console.log(JSON.stringify(condition, null, "  "));
+            // console.log(JSON.stringify(condition, null, "  "));
             repository.updateCondition(patient,condition)
             return res.status(200).json(patient)
         }
@@ -81,11 +81,11 @@ export class PatientController {
         if(patient && score){
             patient.score = score
             
-            console.log(JSON.stringify(patient, null, "  "));
+            // console.log(JSON.stringify(patient, null, "  "));
             
             const updatePatient = await repository.updateScore(patient,score)
 
-            console.log(JSON.stringify(updatePatient, null, "  "));
+            // console.log(JSON.stringify(updatePatient, null, "  "));
             return res.status(200).json(updatePatient)
         }
         return res.status(400).json({"erro":"paciente nao encontrado ou score nao enviado"})
