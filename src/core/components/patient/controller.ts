@@ -48,7 +48,7 @@ export class PatientController {
 
         const repository = new PatientRepository(getRepository(Patient))
 
-        const entity = await repository.findOneByEmail(email)
+        const entity = await repository.deleteByEmail(email)
 
         return res.status(200).json(entity)
     }
