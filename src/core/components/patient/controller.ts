@@ -16,7 +16,7 @@ export class PatientController {
         // log.info(req)
         // log.info( req.body)
         // log.info(name)
-        console.dir(req, { depth: null })
+        console.log("req:" + util.inspect(req))
         // console.dir(name, { depth: null })
         const repository = new PatientRepository(getRepository(Patient))
 
