@@ -61,9 +61,9 @@ export class PatientController {
 
         const entity = await repository.findOneByEmail(email)
 
-        for ([key, value] of Object.entries(req.body)) {
+        for (let key in Object.entries(req.body)) {
             if (key == 'password' || key == 'name' || key == 'conditions' || key == 'score') {
-                entity[key] = value
+                entity[key] = req.body[key]
             }
         }
 
