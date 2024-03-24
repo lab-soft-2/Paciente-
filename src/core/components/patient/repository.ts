@@ -33,9 +33,9 @@ export class PatientRepository {
 		// console.log(JSON.stringify(patient.score, null, "  "));
 		return await this.db.query(`
 		UPDATE  patients
-		SET score = $2
-		WHERE email = $1
-	`, [email,score])
+		SET score = $1
+		WHERE email = $2;
+	`, [score, email])
 		// return await this.db.save(patient)
 	}
 
@@ -47,10 +47,10 @@ export class PatientRepository {
 
 		return await this.db.query(`
 			UPDATE  patients
-			SET condition = $2
-			WHERE email = $1
-		`, [email,condition])
-		
+			SET condition = $1
+			WHERE email = $2;
+		`, [condition, email])
+
 		// return await this.db.save(patient)
 	}
 
