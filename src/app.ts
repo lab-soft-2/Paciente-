@@ -16,8 +16,8 @@ const log = logger({ context: 'App' })
 
 async function main() {
 	const app = express()
+	// Nao funciona com formdata, usar json raw
 	app.use(express.json())
-	// app.use(bodyParser.json());
 
 	await MainDataSource.initialize()
 	log.info('Database connected successfully!')
