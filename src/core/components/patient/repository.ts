@@ -32,7 +32,7 @@ export class PatientRepository {
 
 	async update(patient: Patient): Promise<Patient | undefined> {
 		
-		return await this.db.save(patient)
+		return await this.db.create(patient)
 	}
 
 }
