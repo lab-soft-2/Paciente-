@@ -26,24 +26,24 @@ export class PatientRepository {
 		return await this.db.save(patient)
 	}
 
-	async updateScore(patient: Patient, score: number): Promise<Patient> {
-		patient.score = score
-		console.log(JSON.stringify(patient, null, "  "));
-		console.log(JSON.stringify(score, null, "  "));
-		console.log(JSON.stringify(patient.score, null, "  "));
+	async updateScore(email: string, score: number): Promise<Patient> {
+		// patient.score = score
+		// console.log(JSON.stringify(patient, null, "  "));
+		// console.log(JSON.stringify(score, null, "  "));
+		// console.log(JSON.stringify(patient.score, null, "  "));
 		return await this.db.query(`
 		UPDATE  patients
 		SET score = $2
 		WHERE email = $1
 	`, [email,score])
-		return await this.db.save(patient)
+		// return await this.db.save(patient)
 	}
 
-	async updateCondition(patient: Patient, condition: string): Promise<Patient> {
-		patient.condition = condition
-		console.log(JSON.stringify(patient, null, "  "));
-		console.log(JSON.stringify(condition, null, "  "));
-		console.log(JSON.stringify(patient.condition, null, "  "));
+	async updateCondition(email: string, condition: string): Promise<Patient> {
+		// patient.condition = condition
+		// console.log(JSON.stringify(patient, null, "  "));
+		// console.log(JSON.stringify(condition, null, "  "));
+		// console.log(JSON.stringify(patient.condition, null, "  "));
 
 		return await this.db.query(`
 			UPDATE  patients
@@ -51,7 +51,7 @@ export class PatientRepository {
 			WHERE email = $1
 		`, [email,condition])
 		
-		return await this.db.save(patient)
+		// return await this.db.save(patient)
 	}
 
 	async deleteByEmail(email: string) {
