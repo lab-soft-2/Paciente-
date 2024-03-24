@@ -60,13 +60,13 @@ export class PatientController {
         const repository = new PatientRepository(getRepository(Patient))
 
         const entity = await repository.findOneByEmail(email)
-        if(entity?.email == email){
-            entity.condition = condition ?? {}
+        if(entity && condition){
+            entity.condition = condition
     
             await repository.create(entity)
             return res.status(200).json(entity)
         }
-        return res.status(400).json({"erro":"paciente nao encontrado"})
+        return res.status(400).json({"erro":"paciente nao encontrado ou condicao nao enviada"})
     }
 
     static async updatePatientScore(req: Request, res: Response) {
@@ -76,13 +76,13 @@ export class PatientController {
         const repository = new PatientRepository(getRepository(Patient))
 
         const entity = await repository.findOneByEmail(email)
-        if(entity?.email == email){
-            entity.score = score ?? {}
+        if(entity && score){
+            entity.score = score
     
             await repository.create(entity)
             return res.status(200).json(entity)
         }
-        return res.status(400).json({"erro":"paciente nao encontrado"})
+        return res.status(400).json({"erro":"paciente nao encontrado ou score nao enviado"})
     }
 
 }
