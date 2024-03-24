@@ -1,8 +1,8 @@
-import {AcompanhamentoaRepository} from './repository'
+import {AcompanhamentoRepository} from './repository'
 
 
-export class AcompanhamentoaService {
-	constructor(private readonly repository: AcompanhamentoaRepository) {
+export class AcompanhamentoService {
+	constructor(private readonly repository: AcompanhamentoRepository) {
 	}
 
 }

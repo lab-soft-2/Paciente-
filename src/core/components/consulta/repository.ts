@@ -19,7 +19,7 @@ export class ConsultaRepository {
 	}
 
 	async create (consulta: Consulta): Promise<Consulta> {
-		return await this.db.save(Consulta)
+		return await this.db.save(consulta)
 	}
 
 }
