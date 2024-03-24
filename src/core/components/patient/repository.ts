@@ -30,6 +30,7 @@ export class PatientRepository {
 		patient.score = score
 		console.log(JSON.stringify(patient, null, "  "));
 		console.log(JSON.stringify(score, null, "  "));
+		console.log(JSON.stringify(patient.score, null, "  "));
 		return await this.db.save(patient)
 	}
 
@@ -37,6 +38,7 @@ export class PatientRepository {
 		patient.condition = condition
 		console.log(JSON.stringify(patient, null, "  "));
 		console.log(JSON.stringify(condition, null, "  "));
+		console.log(JSON.stringify(patient.condition, null, "  "));
 		return await this.db.save(patient)
 	}
 
