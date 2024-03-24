@@ -12,7 +12,7 @@ export class PatientController {
         // await MainDataSource.initialize()
         // log.info('Database connected successfully!')
 
-        const { name, email, password } = req.body;
+        // const { name, email, password } = req.body;
         log.info(req)
         log.info( req.body)
         const repository = new PatientRepository(getRepository(Patient))
