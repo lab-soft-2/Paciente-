@@ -9,8 +9,8 @@ export class PatientController {
 
     static async signup(req: Request, res: Response) {
         const log = logger({ context: 'App' })
-        await MainDataSource.initialize()
-        log.info('Database connected successfully!')
+        // await MainDataSource.initialize()
+        // log.info('Database connected successfully!')
 
         const { name, email, password } = req.body;
         log.info(req)

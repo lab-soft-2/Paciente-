@@ -32,17 +32,17 @@ async function main() {
 	app.use("/relacionamento", relacionamentoRouter);
 
 
-	app.get('/teste', async (req, res) => {
-		const repository = new PatientRepository(getRepository(Patient))
-		const patient = new Patient('teste1@on.com','senha','teste1')
+	// app.get('/teste', async (req, res) => {
+	// 	const repository = new PatientRepository(getRepository(Patient))
+	// 	const patient = new Patient('teste1@on.com','senha','teste1')
 
-		repository.create(patient)
+	// 	repository.create(patient)
 
-		const entity = await repository.findOneByEmail('teste1@on.com')
+	// 	const entity = await repository.findOneByEmail('teste1@on.com')
 
-		return res.status(200).json(entity)
+	// 	return res.status(200).json(entity)
 
-	})
+	// })
 
 
 	app.listen(PORT, () => {
