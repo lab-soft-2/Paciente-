@@ -84,7 +84,7 @@ export class PatientController {
             log.info(score)
             log.info(entity.score)
     
-            repository.update(entity)
+            await repository.update(entity)
             return res.status(200).json(entity)
         }
         return res.status(400).json({"erro":"paciente nao encontrado ou score nao enviado"})
