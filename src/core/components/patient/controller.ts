@@ -62,7 +62,8 @@ export class PatientController {
         const entity = await repository.findOneByEmail(email)
         if(entity && condition){
             entity.condition = condition
-    
+            log.info(condition)
+            log.info(entity.condition)
             repository.update(entity)
             return res.status(200).json(entity)
         }
@@ -78,6 +79,8 @@ export class PatientController {
         const entity = await repository.findOneByEmail(email)
         if(entity && score){
             entity.score = score
+            log.info(score)
+            log.info(entity.score)
     
             repository.update(entity)
             return res.status(200).json(entity)
