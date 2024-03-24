@@ -84,8 +84,8 @@ export class PatientController {
             patient.name = 'Number(score)'
             
             console.log(JSON.stringify(patient, null, "  "));
-
-            const updatePatient = await repository.update(patient.id,patient)
+            const id = patient.id ?? ''
+            const updatePatient = await repository.update(id,patient)
 
             console.log(JSON.stringify(updatePatient, null, "  "));
             return res.status(200).json(updatePatient)
