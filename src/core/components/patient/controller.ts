@@ -67,7 +67,7 @@ export class PatientController {
             }
         }
 
-        const entity = await repository.save(entity)
+        await repository.save(entity)
 
         return res.status(200).json(entity)
     }
