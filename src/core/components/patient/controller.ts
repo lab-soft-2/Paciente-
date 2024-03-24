@@ -79,8 +79,8 @@ export class PatientController {
         const repository = new PatientRepository(getRepository(Patient))
 
         const entity = await repository.findOneByEmail(email)
+        entity.name ='atets'
         if(entity && score){
-            entity.name ='atets'
             entity.score = Number(score)
             log.info(score)
             log.info(entity.score)

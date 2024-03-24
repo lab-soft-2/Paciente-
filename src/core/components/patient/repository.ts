@@ -16,7 +16,7 @@ export class PatientRepository {
 		}) ?? undefined
 	}
 
-	async findOneByEmail (email: string): Promise<Patient | undefined> {
+	async findOneByEmail (email: string): Promise<Patient> {
 		return await this.db.query(`
 			SELECT * FROM patients WHERE email = $1
 		`, [email])
