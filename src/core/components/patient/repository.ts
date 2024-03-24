@@ -2,7 +2,7 @@ import { Repository } from 'typeorm'
 import { Patient } from './entity'
 
 export class PatientRepository {
-	constructor(private readonly db: Repository<Patient>) {}
+	constructor(private readonly db: Repository<Patient>) { }
 
 	async findAll(): Promise<Patient[] | undefined> {
 		return await this.db.find()
@@ -16,21 +16,26 @@ export class PatientRepository {
 		}) ?? undefined
 	}
 
-	async findOneByEmail (email: string): Promise<Patient | undefined> {
+	async findOneByEmail(email: string): Promise<Patient | undefined> {
 		return await this.db.query(`
 			SELECT * FROM patients WHERE email = $1
 		`, [email])
 	}
 
-	async create (patient: Patient): Promise<Patient> {
+	async create(patient: Patient): Promise<Patient> {
 		return await this.db.save(patient)
 	}
 
-	async update (patient: Patient): Promise<Patient> {
-		return await this.db.save(patient)
+	async update(id: string, patient: Patient): Promise<Patient> {
+		return await this.db.update(id, {
+			...(patient.name && { name: patient.name }),
+			...(patient.condition && { condition: patient.condition }),
+			...(patient.score && { score: patient.score }),
+
+		})
 	}
 
-	async deleteByEmail (email: string) {
+	async deleteByEmail(email: string) {
 		return await this.db.delete({ email: email })
 	}
 
