@@ -78,16 +78,17 @@ export class PatientController {
 
         const repository = new PatientRepository(getRepository(Patient))
 
-        const entity = await repository.findOneByEmail(email)
-        entity.name ='atets'
-        if(entity && score){
-            entity.score = Number(score)
-            log.info(score)
-            log.info(entity.score)
-            console.log(JSON.stringify(entity, null, "  "));
-            const newPatient = await repository.update(entity)
-            console.log(JSON.stringify(newPatient, null, "  "));
-            return res.status(200).json(newPatient)
+        const patient = await repository.findOneByEmail(email)
+        if(patient && score){
+            patient.score = Number(score)
+            patient.name = 'Number(score)'
+            
+            console.log(JSON.stringify(patient, null, "  "));
+
+            const updatePatient = await repository.update(patient)
+
+            console.log(JSON.stringify(updatePatient, null, "  "));
+            return res.status(200).json(updatePatient)
         }
         return res.status(400).json({"erro":"paciente nao encontrado ou score nao enviado"})
     }
