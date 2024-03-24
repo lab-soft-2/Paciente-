@@ -4,6 +4,12 @@ import {logger} from './config/logger'
 import {PatientRepository} from './core/components/patient/repository'
 import {getRepository, MainDataSource} from './config/db/data-source'
 import {Patient} from './core/components/patient/entity'
+import { exameRouter } from "./core/components/exame/router";
+import { acompanhamentoRouter } from "./core/components/acompanhamento/router";
+import { consultaRouter } from "./core/components/consulta/router";
+import { documentoRouter } from "./core/components/documento/router";
+import { patientRouter } from "./core/components/patient/router";
+import { relacionamentoRouter } from "./core/components/relacionamentos/router";
 
 const PORT = env.serverPort
 const log = logger({ context: 'App' })
@@ -18,14 +24,21 @@ async function main() {
 		return res.status(200).send()
 	})
 
-	app.get('/', (req, res) => {
-		res.send('Hello World!')
-	})
+	app.use("/acompanhamento", acompanhamentoRouter);
+	app.use("/consulta", consultaRouter);
+	app.use("/documento", documentoRouter);
+	app.use("/exame", exameRouter);
+	app.use("/patient", patientRouter);
+	app.use("/relacionamento", relacionamentoRouter);
+
 
 	app.get('/teste', async (req, res) => {
 		const repository = new PatientRepository(getRepository(Patient))
+		const patient = new Patient('teste1@on.com','senha','teste1')
 
-		const entity = await repository.findOneByEmail('email@example.com')
+		repository.create(patient)
+
+		const entity = await repository.findOneByEmail('teste1@on.com')
 
 		return res.status(200).json(entity)
 
