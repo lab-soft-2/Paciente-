@@ -9,7 +9,7 @@ import {
 @Entity({ name: 'patients' })
 export class Patient {
     @PrimaryGeneratedColumn('uuid')
-    	id?: string
+    	id: string
 
     @Column({ nullable: false, type: 'varchar', length: 255 })
     	name: string
@@ -32,9 +32,9 @@ export class Patient {
     @Column({ default: 5, type: 'integer' })
     	score?: number
     
-    constructor(email: string, password: string, name: string) {
-    	this.name = name
-    	this.email = email
-    	this.password = password
-    }
+    // constructor(email: string, password: string, name: string) {
+    // 	this.name = name
+    // 	this.email = email
+    // 	this.password = password
+    // }
 }

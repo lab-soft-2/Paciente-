@@ -14,7 +14,11 @@ export class PatientController {
 
         const repository = new PatientRepository(getRepository(Patient))
 
-        const patient = new Patient(email, password, name);
+        const patient = new Patient();
+        patient.email = email
+        patient.name = name
+        patient.password = password
+
         repository.create(patient)
 
         return res
@@ -64,7 +68,8 @@ export class PatientController {
         if(patient && condition){
             patient.condition = condition
             // console.log(JSON.stringify(condition, null, "  "));
-            repository.updateCondition(patient,condition)
+            // repository.updateCondition(patient,condition)
+            repository.update(patient)
             return res.status(200).json(patient)
         }
         return res.status(400).json({"erro":"paciente nao encontrado ou condicao nao enviada"})
@@ -83,7 +88,9 @@ export class PatientController {
             
             // console.log(JSON.stringify(patient, null, "  "));
             
-            const updatePatient = await repository.updateScore(patient,score)
+            // const updatePatient = await repository.updateScore(patient,score)
+            repository.update(patient)
+
 
             // console.log(JSON.stringify(updatePatient, null, "  "));
             return res.status(200).json(updatePatient)
