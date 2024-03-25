@@ -65,8 +65,9 @@ export class PatientController {
         const repository = new PatientRepository(getRepository(Patient))
 
         const patient = await repository.findOneByEmail(email)
-        
+
         console.log(JSON.stringify(patient, null, "  "))
+        console.log(JSON.stringify(newcondition, null, "  "))
 
         if(patient && newcondition){
             patient.condition = newcondition
