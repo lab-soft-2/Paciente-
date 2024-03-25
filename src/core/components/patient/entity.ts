@@ -9,7 +9,7 @@ import {
 @Entity({ name: 'patients' })
 export class Patient {
     @PrimaryGeneratedColumn('uuid')
-    	id: string
+    	id?: string
 
     @Column({ nullable: false, type: 'varchar', length: 255 })
     	name: string
