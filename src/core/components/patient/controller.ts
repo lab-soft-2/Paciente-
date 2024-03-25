@@ -93,7 +93,7 @@ export class PatientController {
 
 
             // console.log(JSON.stringify(updatePatient, null, "  "));
-            return res.status(200).json(updatePatient)
+            return res.status(200).json(patient)
         }
         return res.status(400).json({"erro":"paciente nao encontrado ou score nao enviado"})
     }
