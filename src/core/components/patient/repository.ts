@@ -17,9 +17,14 @@ export class PatientRepository {
 	}
 
 	async findOneByEmail(email: string): Promise<Patient | undefined> {
-		return await this.db.query(`
-			SELECT * FROM patients WHERE email = $1
-		`, [email])
+		// return await this.db.query(`
+		// 	SELECT * FROM patients WHERE email = $1
+		// `, [email])
+		return await this.db.findOne({
+			where: {
+				email
+			}
+		}) ?? undefined
 	}
 
 	async create(patient: Patient): Promise<Patient> {

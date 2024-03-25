@@ -60,14 +60,15 @@ export class PatientController {
     static async updatePatientCondition(req: Request, res: Response) {
         const log = logger({ context: 'App' })
 
-        const { email,  condition } = req.body;
+        const { email,  newcondition } = req.body;
 
         const repository = new PatientRepository(getRepository(Patient))
 
         const patient = await repository.findOneByEmail(email)
-        if(patient && condition){
-            patient.condition = condition
-            // console.log(JSON.stringify(condition, null, "  "));
+        if(patient && newcondition){
+            patient.condition = newcondition
+            console.log(JSON.stringify(condition, null, "  "));
+            console.log(JSON.stringify(patient, null, "  "));
             // repository.updateCondition(patient,condition)
             repository.update(patient)
             return res.status(200).json(patient)
