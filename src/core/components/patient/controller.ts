@@ -14,10 +14,10 @@ export class PatientController {
 
         const repository = new PatientRepository(getRepository(Patient))
 
-        const patient = new Patient();
-        patient.email = email
-        patient.name = name
-        patient.password = password
+        const patient = new Patient(email, password, name);
+        // patient.email = email
+        // patient.name = name
+        // patient.password = password
 
         repository.create(patient)
 
@@ -60,7 +60,7 @@ export class PatientController {
     static async updatePatientCondition(req: Request, res: Response) {
         const log = logger({ context: 'App' })
 
-        const { email,  newcondition } = req.body;
+        const { email, newcondition } = req.body;
 
         const repository = new PatientRepository(getRepository(Patient))
 
@@ -69,7 +69,7 @@ export class PatientController {
         console.log(JSON.stringify(patient, null, "  "))
         console.log(JSON.stringify(newcondition, null, "  "))
 
-        if(patient && newcondition){
+        if (patient && newcondition) {
             patient.condition = newcondition
             console.log(JSON.stringify(newcondition, null, "  "))
             console.log(JSON.stringify(patient, null, "  "))
@@ -77,7 +77,7 @@ export class PatientController {
             repository.update(patient)
             return res.status(200).json(patient)
         }
-        return res.status(400).json({"erro":"paciente nao encontrado ou condicao nao enviada"})
+        return res.status(400).json({ "erro": "paciente nao encontrado ou condicao nao enviada" })
     }
 
     static async updatePatientScore(req: Request, res: Response) {
@@ -88,11 +88,11 @@ export class PatientController {
         const repository = new PatientRepository(getRepository(Patient))
 
         const patient = await repository.findOneByEmail(email)
-        if(patient && score){
+        if (patient && score) {
             patient.score = score
-            
+
             // console.log(JSON.stringify(patient, null, "  "));
-            
+
             // const updatePatient = await repository.updateScore(patient,score)
             repository.update(patient)
 
@@ -100,7 +100,7 @@ export class PatientController {
             // console.log(JSON.stringify(updatePatient, null, "  "));
             return res.status(200).json(patient)
         }
-        return res.status(400).json({"erro":"paciente nao encontrado ou score nao enviado"})
+        return res.status(400).json({ "erro": "paciente nao encontrado ou score nao enviado" })
     }
 
 }

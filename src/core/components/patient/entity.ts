@@ -32,9 +32,9 @@ export class Patient {
     @Column({ default: 5, type: 'integer' })
     	score?: number
     
-    // constructor(email: string, password: string, name: string) {
-    // 	this.name = name
-    // 	this.email = email
-    // 	this.password = password
-    // }
+    constructor(email: string, password: string, name: string) {
+    	this.name = name
+    	this.email = email
+    	this.password = password
+    }
 }
