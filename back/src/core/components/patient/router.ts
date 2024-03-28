@@ -26,8 +26,44 @@ Router.post(
   PatientController.updatePatientScore
 );
 
+// main requests
+Router.post(
+  "/signup", 
+  PatientController.signup
+);
 
-Router.post("/signup", PatientController.signup);
+Router.post(
+  "/login",
+  PatientController.patientLogin
+);
 
+
+
+Router.get(
+  "/vizualizar/documento",
+  PatientController.patientGetDocumentos
+);
+
+Router.get(
+  "/vizualizar/agenda",
+  PatientController.patientGetConsultas
+);
+
+
+Router.post(
+  "/postar/exame",
+  PatientController.patientPostExame
+);
+
+
+Router.get(
+  "/vizualizar/medicos",
+  PatientController.patientGetMedicos
+);
+
+Router.post(
+  "/fazer/consulta",
+  PatientController.patientPostConsulta
+);
 
 export { Router as patientRouter };

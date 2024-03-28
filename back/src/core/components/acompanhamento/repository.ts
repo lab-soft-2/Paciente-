@@ -13,9 +13,11 @@ export class AcompanhamentoRepository {
 	}
 
 	async findOneByEmail (email: string): Promise<Acompanhamento | undefined> {
-		return await this.db.query(`
-			SELECT * FROM acompanhamentos WHERE email = $1
-		`, [email])
+		return await this.db.findOne({
+			where: {
+				email
+			}
+		}) ?? undefined
 	}
 
 	async create (acompanhamento: Acompanhamento): Promise<Acompanhamento> {
