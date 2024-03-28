@@ -1,11 +1,12 @@
 import React from 'react';
 
+import Agenda from './pages/agenda'
+import Cadastro from './pages/cadastro'
+import Consulta from './pages/consulta'
 function App() {
   return (
     <>
-    <h1 className="text-3xl font-bold underline text-red-200">
-      Simple React Typescript Tailwind Sample
-    </h1>
+    <Agenda />
     </>
   );
 }
