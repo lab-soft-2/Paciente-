@@ -209,6 +209,7 @@ export class PatientController {
         }, (res) => {
             console.log(res)
             resp = res
+            return res
         });
 
 
