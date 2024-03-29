@@ -134,10 +134,12 @@ export class PatientController {
 
         const documentos = await repository.findAllByEmail(email)
 
-        if (documentos.length === 0) {
-            return res.status(400).json({ "erro": "Documentos nao encontrados" })
+        if(documentos){
+            if (documentos.length > 0) {
+                return res.status(200).json(documentos)
+            }
         }
-        return res.status(200).json(patient)
+        return res.status(400).json({ "erro": "Documentos nao encontrados" })
     }
 
     static async patientGetConsultas(req: Request, res: Response) {
@@ -148,11 +150,12 @@ export class PatientController {
         const repository = new ConsultaRepository(getRepository(Consulta))
 
         const consulta = await repository.findAllByEmail(email)
-
-        if (consulta.length === 0) {
-            return res.status(400).json({ "erro": "Consultas nao encontradas" })
+        if(consulta){
+            if (consulta.length > 0) {
+                return res.status(200).json(consulta)
+            }
         }
-        return res.status(200).json(patient)
+        return res.status(400).json({ "erro": "consultas nao encontradas" })
     }
 
     static async patientPostExame(req: Request, res: Response) {
@@ -184,7 +187,7 @@ export class PatientController {
 
         return res
             .status(200)
-            .json({ message: "Consulta created successfully", novoexame });
+            .json({ message: "Consulta created successfully", consulta });
     }
 
     static async patientGetMedicos(req: Request, res: Response) {
@@ -192,11 +195,11 @@ export class PatientController {
 
         // const { paciente, medico, data, duracao } = req.body;
 
-        // fazer request para o medico_db
+        // fazer request para o medico_db  medico/user/all
 
         return res
             .status(200)
-            .json({ message: "Consulta created successfully", novoexame });
+            // .json({ message: "Consulta created successfully", novoexame });
     }
 
 

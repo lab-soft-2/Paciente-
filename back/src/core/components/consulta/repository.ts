@@ -12,8 +12,8 @@ export class ConsultaRepository {
 		}) ?? undefined
 	}
 
-	async findOneByEmail (paciente: string): Promise<Consulta | undefined> {
-		return await this.db.findOne({
+	async findAllByEmail (paciente: string): Promise<Consulta | undefined> {
+		return await this.db.findAll({
 			where: {
 				paciente
 			}
