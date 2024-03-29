@@ -21,6 +21,7 @@ export class DocumentoRepository {
 	}
 
 	async create (documento: Documento): Promise<Documento> {
+		console.log(documento)
 		return await this.db.save(documento)
 	}
 
