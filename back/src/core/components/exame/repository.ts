@@ -20,6 +20,14 @@ export class ExameRepository {
 		}) ?? undefined
 	}
 
+	async findAllByEmail (paciente: string): Promise<Exame[] | undefined> {
+		return await this.db.find({
+			where: {
+				paciente
+			}
+		}) ?? undefined
+	}
+
 	async create (exame: Exame): Promise<Exame> {
 		return await this.db.save(exame)
 	}

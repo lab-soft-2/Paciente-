@@ -236,6 +236,22 @@ export class PatientController {
             .json({ message: "Exame created successfully", novoexame });
     }
 
+    static async patientGetExame(req: Request, res: Response) {
+        const log = logger({ context: 'App' })
+
+        const { email } = req.body;
+
+        const repository = new ExameRepository(getRepository(Exame))
+
+        
+
+        const exames = await repository.findAllByEmail(email)
+
+        return res
+            .status(200)
+            .json({ message: "Exame created successfully", exames });
+    }
+
     static async patientPostConsulta(req: Request, res: Response) {
         const log = logger({ context: 'App' })
 

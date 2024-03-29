@@ -68,6 +68,11 @@ Router.post(
   PatientController.patientPostExame
 );
 
+Router.get(
+  "/vizualizar/exame",
+  PatientController.patientGetExame
+);
+
 
 Router.get(
   "/vizualizar/medicos",
