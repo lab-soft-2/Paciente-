@@ -17,7 +17,7 @@ export class Consulta {
     @Column({ nullable: false, type: 'varchar', length: 255 })
     	profissional: string
 
-	@Column({ nullable: false, type: 'varchar', length: 255, unique: true })
+	@Column({ type: 'varchar', length: 255, unique: true })
     	documento?: string
 
     @CreateDateColumn()
