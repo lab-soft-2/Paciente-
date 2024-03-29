@@ -201,7 +201,7 @@ export class PatientController {
 
         let resp = {}
 
-        const req = http.get({
+        http.get({
             hostname: 'localhost',
             port: 3001,
             path: '/medico/user/all',
