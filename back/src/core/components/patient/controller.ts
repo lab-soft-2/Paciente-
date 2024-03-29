@@ -132,7 +132,7 @@ export class PatientController {
         const consultaUpdate = await repositoryConsulta.findOneById(consulta)
         const pacienteUpdate = await repositoryPatient.findOneByEmail(paciente)
 
-        if (consulta && 'consulta' in newcondition) {
+        if (consultaUpdate && 'consulta' in newcondition) {
             consultaUpdate.status = newcondition['consulta']
             consultaUpdate?.fim = new Date().toDateString()
             repositoryConsulta.create(consultaUpdate)
