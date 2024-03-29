@@ -201,7 +201,7 @@ export class PatientController {
 
         let resp = {}
 
-        await http.get({
+        const req = http.get({
             hostname: 'localhost',
             port: 3001,
             path: '/medico/user/all',
@@ -210,8 +210,9 @@ export class PatientController {
             console.log(res)
             resp = res
             return res
-        });
-
+        })
+        
+        req.end()
 
         return res
             .status(200)
