@@ -12,7 +12,7 @@ export class ConsultaRepository {
 		}) ?? undefined
 	}
 
-	async findAllByEmail (paciente: string): Promise<Consulta | undefined> {
+	async findAllByEmail (paciente: string): Promise<Consulta[] | undefined> {
 		return await this.db.findAll({
 			where: {
 				paciente
