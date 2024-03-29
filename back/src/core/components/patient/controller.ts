@@ -201,7 +201,7 @@ export class PatientController {
 
         const newdata = new Date()
 
-        newdata.setSeconds((data.getSeconds() ?? data) - duracao)
+        newdata.setSeconds(data - duracao)
 
         consulta.fim = newdata.toDateString()
         repository.create(consulta)
