@@ -134,7 +134,7 @@ export class PatientController {
 
         const documentos = await repository.findAllByEmail(email)
 
-        if(documentos){
+        if (documentos) {
             if (documentos.length > 0) {
                 return res.status(200).json(documentos)
             }
@@ -150,7 +150,7 @@ export class PatientController {
         const repository = new ConsultaRepository(getRepository(Consulta))
 
         const consulta = await repository.findAllByEmail(email)
-        if(consulta){
+        if (consulta) {
             if (consulta.length > 0) {
                 return res.status(200).json(consulta)
             }
@@ -201,21 +201,20 @@ export class PatientController {
 
         let resp = {}
 
-        http.get({
+        await http.get({
             hostname: 'localhost',
             port: 3001,
             path: '/medico/user/all',
-           
-          }, (res) => {
+
+        }, (res) => {
             console.log(res)
             resp = res
-          }); 
+        });
 
-          console.log(resp)
 
         return res
             .status(200)
-            // .json({ message: "Consulta created successfully", novoexame });
+        // .json({ message: "Consulta created successfully", novoexame });
     }
 
 
