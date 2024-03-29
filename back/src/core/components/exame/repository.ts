@@ -12,10 +12,10 @@ export class ExameRepository {
 		}) ?? undefined
 	}
 
-	async findOneByEmail (email: string): Promise<Exame | undefined> {
+	async findOneByEmail (paciente: string): Promise<Exame | undefined> {
 		return await this.db.findOne({
 			where: {
-				email
+				paciente
 			}
 		}) ?? undefined
 	}
