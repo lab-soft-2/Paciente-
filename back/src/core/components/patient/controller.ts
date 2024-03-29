@@ -199,32 +199,28 @@ export class PatientController {
 
         // fazer request para o medico_db  medico/user/all
 
-        let resp = {}
 
-        resp = http.get({
+        const resp = http.get({
             hostname: 'localhost',
             port: 3001,
             path: '/medico/user/all',
 
         }, (resp) => {
             let data = '';
-            console.log('1')
             // Um bloco de dados foi recebido.
             resp.on('data', (chunk) => {
                 data += chunk;
-                console.log('2')
             });
 
             // Toda a resposta foi recebida. Exibir o resultado.
             resp.on('end', () => {
                 console.log(data);
-                resp = data
             });
 
         }).on("error", (err) => {
             console.log("Error: " + err.message);
         })
-
+        resp.end()
         console.log('4')
 
         return res
