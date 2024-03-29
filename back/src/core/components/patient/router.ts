@@ -31,6 +31,11 @@ Router.post(
   PatientController.medicPostDocumento
 );
 
+Router.post(
+  "/finalizar/consulta",
+  PatientController.finalizarConsulta
+);
+
 // main requests
 Router.post(
   "/signup", 

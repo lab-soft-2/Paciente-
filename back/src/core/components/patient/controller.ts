@@ -113,16 +113,41 @@ export class PatientController {
 
         const newDocumento = new Documento(paciente, profissional);
         newDocumento.file = documento
-        // patient.email = email
-        // patient.name = name
-        // patient.password = password
 
-        // repository.create(newDocumento)
-        console.log('foi')
+
+        repository.create(newDocumento)
 
         return res
             .status(200)
             .json({ message: "Documento created successfully", newDocumento });
+    }
+
+    static async finalizarConsulta(req: Request, res: Response) {
+
+        const { paciente, medico, newcondition, consulta } = req.body;
+
+        const repositoryConsulta = new ConsultaRepository(getRepository(Consulta))
+        const repositoryPatient = new PatientRepository(getRepository(Patient))
+
+        const consultaUpdate = await repositoryConsulta.findOneById(consulta)
+        const pacienteUpdate = await repositoryPatient.findOneByEmail(paciente)
+
+        if (consulta && 'consulta' in newcondition) {
+            consultaUpdate.status = newcondition['consulta']
+            consultaUpdate?.fim = new Date().toDateString()
+            repositoryConsulta.create(consultaUpdate)
+        }
+        if (pacienteUpdate && 'paciente' in newcondition) {
+            pacienteUpdate.condition = newcondition['paciente']
+            repositoryPatient.create(pacienteUpdate)
+        }
+
+        return res
+            .status(200)
+            .json({ "Consulta finalizada ": {
+                "consulta": consultaUpdate, 
+                "paciente":pacienteUpdate
+            } });
     }
 
 
