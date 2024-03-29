@@ -134,7 +134,7 @@ export class PatientController {
 
         if (consultaUpdate && 'consulta' in newcondition) {
             consultaUpdate.status = newcondition['consulta']
-            consultaUpdate?.fim = new Date().toDateString()
+            consultaUpdate.fim = new Date().toDateString()
             repositoryConsulta.create(consultaUpdate)
         }
         if (pacienteUpdate && 'paciente' in newcondition) {
