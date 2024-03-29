@@ -201,7 +201,7 @@ export class PatientController {
 
         let resp = {}
 
-        http.get({
+        resp = http.get({
             hostname: 'localhost',
             port: 3001,
             path: '/medico/user/all',
@@ -221,6 +221,7 @@ export class PatientController {
                 console.log(JSON.parse(data).explanation);
                 resp = data
                 console.log('3')
+                return (data)
             });
 
         }).on("error", (err) => {
@@ -230,7 +231,7 @@ export class PatientController {
         console.log('4')
 
         return res
-            .status(200).json(data ?? {})
+            .status(200).json(resp ?? {})
         // .json({ message: "Consulta created successfully", novoexame });
     }
 
