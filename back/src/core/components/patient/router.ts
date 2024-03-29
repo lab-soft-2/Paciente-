@@ -26,6 +26,11 @@ Router.post(
   PatientController.updatePatientScore
 );
 
+Router.post(
+  "/postar/documento",
+  PatientController.medicPostDocumento
+);
+
 // main requests
 Router.post(
   "/signup", 

@@ -105,6 +105,25 @@ export class PatientController {
         return res.status(400).json({ "erro": "paciente nao encontrado ou score nao enviado" })
     }
 
+    static async medicPostDocumento(req: Request, res: Response) {
+
+        const { paciente, profissional, documento } = req.body;
+
+        const repository = new DocumentoRepository(getRepository(Documento))
+
+        const newDocumento = new Documento(paciente, profissional);
+        newDocumento.file = documento
+        // patient.email = email
+        // patient.name = name
+        // patient.password = password
+
+        repository.create(newDocumento)
+
+        return res
+            .status(200)
+            .json({ message: "Documento created successfully", newDocumento });
+    }
+
 
 
 
