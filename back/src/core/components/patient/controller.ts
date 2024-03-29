@@ -199,9 +199,9 @@ export class PatientController {
 
         // fazer request para o medico_db  medico/user/all
 
-        let result = {}
+        let resp = {}
 
-        const resp = http.get({
+        resp = http.get({
             hostname: 'localhost',
             port: 3001,
             path: '/medico/user/all',
@@ -217,12 +217,8 @@ export class PatientController {
 
             // Toda a resposta foi recebida. Exibir o resultado.
             resp.on('end', () => {
-                console.log('3')
-                console.log(JSON.parse(data).explanation);
                 console.log(data);
-                result = data
-                console.log('3')
-                return (data)
+                resp = data
             });
 
         }).on("error", (err) => {
@@ -232,7 +228,7 @@ export class PatientController {
         console.log('4')
 
         return res
-            .status(200).json(result ?? {})
+            .status(200).json(resp ?? {})
         // .json({ message: "Consulta created successfully", novoexame });
     }
 
