@@ -26,7 +26,7 @@ export class Consulta {
     @UpdateDateColumn()
     	updated_at?: Date
 
-	@Column({ type: 'date' })
+	@Column({ nullable: true, type: 'date' })
     	inicio?: string
 
 	@Column({ nullable: true,type:'int'})
