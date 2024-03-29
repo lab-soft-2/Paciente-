@@ -206,13 +206,25 @@ export class PatientController {
             port: 3001,
             path: '/medico/user/all',
 
-        }, (res) => {
-            console.log(res)
-            resp = res
-            return res
-        })
+        }, (resp) => {
+            let data = '';
+          
+            // Um bloco de dados foi recebido.
+            resp.on('data', (chunk) => {
+              data += chunk;
+            });
+          
+            // Toda a resposta foi recebida. Exibir o resultado.
+            resp.on('end', () => {
+              console.log(JSON.parse(data).explanation);
+              resp = data
+            });
+          
+          }).on("error", (err) => {
+            console.log("Error: " + err.message);
+          })
+
         
-        req.end()
 
         return res
             .status(200)
