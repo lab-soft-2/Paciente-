@@ -13,7 +13,7 @@ export class DocumentoRepository {
 	}
 
 	async findAllByEmail (paciente: string): Promise<Documento[] | undefined> {
-		return await this.db.findAll({
+		return await this.db.find({
 			where: {
 				paciente
 			}
