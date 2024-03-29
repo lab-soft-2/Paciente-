@@ -228,6 +228,7 @@ export class PatientController {
         const repository = new ExameRepository(getRepository(Exame))
 
         const novoexame = new Exame(email);
+        novoexame.file = exame
 
         repository.create(novoexame)
 
