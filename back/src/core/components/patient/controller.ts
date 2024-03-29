@@ -117,7 +117,7 @@ export class PatientController {
         // patient.name = name
         // patient.password = password
 
-        repository.create(newDocumento)
+        // repository.create(newDocumento)
 
         return res
             .status(200)
