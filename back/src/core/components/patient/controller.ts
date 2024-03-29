@@ -193,9 +193,25 @@ export class PatientController {
     static async patientGetMedicos(req: Request, res: Response) {
         const log = logger({ context: 'App' })
 
+        const http = require('node:http')
+
         // const { paciente, medico, data, duracao } = req.body;
 
         // fazer request para o medico_db  medico/user/all
+
+        let resp = {}
+
+        http.get({
+            hostname: 'localhost',
+            port: 3001,
+            path: '/medico/user/all',
+           
+          }, (res) => {
+            console.log(res)
+            resp = res
+          }); 
+
+          console.log(resp)
 
         return res
             .status(200)
