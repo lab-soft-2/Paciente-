@@ -198,8 +198,12 @@ export class PatientController {
         const repository = new ConsultaRepository(getRepository(Consulta))
 
         const consulta = new Consulta(medico, paciente);
+        
         const newdata = new Date()
-        consulta.fim = newdata.setSeconds(data.getSeconds() ?? data - duracao)
+
+        newdata.setSeconds((data.getSeconds() ?? data) - duracao)
+
+        consulta.fim = newdata
         repository.create(consulta)
 
         return res
