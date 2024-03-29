@@ -219,9 +219,10 @@ export class PatientController {
             resp.on('end', () => {
                 console.log('3')
                 console.log(JSON.parse(data).explanation);
+                console.log(data);
                 resp = data
                 console.log('3')
-                return (data)
+                return (JSON.parse(data).explanation)
             });
 
         }).on("error", (err) => {
