@@ -216,7 +216,7 @@ export class PatientController {
             resp.on('end', () => {
                 console.log(data);
                 return res
-                    .status(200).json(data)
+                    .status(200).json(JSON.parse(data))
             });
 
         }).on("error", (err) => {
