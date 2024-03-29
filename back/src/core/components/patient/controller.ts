@@ -135,7 +135,7 @@ export class PatientController {
 
         if (consultaUpdate && 'consulta' in newcondition) {
             consultaUpdate.status = newcondition['consulta']
-            consultaUpdate.fim = new Date().toDateString()
+            consultaUpdate.inicio = new Date().toDateString()
             repositoryConsulta.create(consultaUpdate)
         }
         if (pacienteUpdate && 'paciente' in newcondition) {
@@ -262,11 +262,8 @@ export class PatientController {
 
         const consulta = new Consulta(medico, paciente);
 
-        const newdata = new Date()
-
-        newdata.setSeconds(data - duracao)
-
-        consulta.fim = newdata.toDateString()
+        consulta.inicio = data.toDateString()
+        consulta.duracao = duracao
         repository.create(consulta)
 
         return res

@@ -27,7 +27,10 @@ export class Consulta {
     	updated_at?: Date
 
 	@Column({ type: 'date' })
-    	fim?: string
+    	inicio?: string
+
+	@Column({ nullable: true})
+    	duracao?: number
 
     @Column( { default: {}, type: 'jsonb' })
     	status?: string
