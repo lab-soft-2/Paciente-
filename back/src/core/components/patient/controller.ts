@@ -125,6 +125,7 @@ export class PatientController {
     static async finalizarConsulta(req: Request, res: Response) {
 
         const { paciente, medico, newcondition, consulta } = req.body;
+        console.log(newcondition)
 
         const repositoryConsulta = new ConsultaRepository(getRepository(Consulta))
         const repositoryPatient = new PatientRepository(getRepository(Patient))
