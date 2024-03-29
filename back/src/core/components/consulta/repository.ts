@@ -19,6 +19,14 @@ export class ConsultaRepository {
 			}
 		}) ?? undefined
 	}
+	
+	async findAllByEmailMedic (profissional: string): Promise<Consulta[] | undefined> {
+		return await this.db.find({
+			where: {
+				profissional
+			}
+		}) ?? undefined
+	}
 
 	async create (consulta: Consulta): Promise<Consulta> {
 		return await this.db.save(consulta)

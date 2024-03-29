@@ -37,8 +37,6 @@ Router.post(
   PatientController.patientLogin
 );
 
-
-
 Router.get(
   "/vizualizar/documento",
   PatientController.patientGetDocumentos
@@ -47,6 +45,11 @@ Router.get(
 Router.get(
   "/vizualizar/agenda",
   PatientController.patientGetConsultas
+);
+
+Router.get(
+  "/vizualizar/agenda/medico",
+  PatientController.medicGetConsultas
 );
 
 

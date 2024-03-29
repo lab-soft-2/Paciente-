@@ -158,6 +158,22 @@ export class PatientController {
         return res.status(400).json({ "erro": "consultas nao encontradas" })
     }
 
+    static async medicGetConsultas(req: Request, res: Response) {
+        const log = logger({ context: 'App' })
+
+        const { email } = req.body;
+
+        const repository = new ConsultaRepository(getRepository(Consulta))
+
+        const consulta = await repository.findAllByEmailMedic(email)
+        if (consulta) {
+            if (consulta.length > 0) {
+                return res.status(200).json(consulta)
+            }
+        }
+        return res.status(400).json({ "erro": "consultas nao encontradas" })
+    }
+
     static async patientPostExame(req: Request, res: Response) {
         const log = logger({ context: 'App' })
 
@@ -182,7 +198,8 @@ export class PatientController {
         const repository = new ConsultaRepository(getRepository(Consulta))
 
         const consulta = new Consulta(medico, paciente);
-        consulta.fim = data.setSeconds(data.getSeconds() - duracao)
+        const newdata = new Date()
+        consulta.fim = newdata.setSeconds(data.getSeconds() ?? data - duracao)
         repository.create(consulta)
 
         return res
