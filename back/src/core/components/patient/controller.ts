@@ -215,17 +215,13 @@ export class PatientController {
             // Toda a resposta foi recebida. Exibir o resultado.
             resp.on('end', () => {
                 console.log(data);
+                return res
+                    .status(200).json(data)
             });
 
         }).on("error", (err) => {
             console.log("Error: " + err.message);
         })
-        resp.end()
-        console.log('4')
-
-        return res
-            .status(200).json(resp ?? {})
-        // .json({ message: "Consulta created successfully", novoexame });
     }
 
 
