@@ -29,7 +29,7 @@ export class Consulta {
 	@Column({ type: 'date' })
     	inicio?: string
 
-	@Column({ nullable: true})
+	@Column({ nullable: true,type:'int'})
     	duracao?: number
 
     @Column( { default: {}, type: 'jsonb' })
