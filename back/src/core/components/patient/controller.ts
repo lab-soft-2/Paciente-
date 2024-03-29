@@ -208,26 +208,29 @@ export class PatientController {
 
         }, (resp) => {
             let data = '';
-          
+            console.log('1')
             // Um bloco de dados foi recebido.
             resp.on('data', (chunk) => {
-              data += chunk;
+                data += chunk;
+                console.log('2')
             });
-          
+
             // Toda a resposta foi recebida. Exibir o resultado.
             resp.on('end', () => {
-              console.log(JSON.parse(data).explanation);
-              resp = data
+                console.log('3')
+                console.log(JSON.parse(data).explanation);
+                resp = data
+                console.log('3')
             });
-          
-          }).on("error", (err) => {
-            console.log("Error: " + err.message);
-          })
 
-        
+        }).on("error", (err) => {
+            console.log("Error: " + err.message);
+        })
+
+        console.log('4')
 
         return res
-            .status(200)
+            .status(200).json(data ?? {})
         // .json({ message: "Consulta created successfully", novoexame });
     }
 
