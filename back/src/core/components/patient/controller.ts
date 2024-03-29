@@ -118,6 +118,7 @@ export class PatientController {
         // patient.password = password
 
         // repository.create(newDocumento)
+        console.log('foi')
 
         return res
             .status(200)
