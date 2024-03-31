@@ -1,6 +1,7 @@
 import express from 'express'
 import { env } from './config/env'
 import {logger} from './config/logger'
+import { errorHandler } from "./middleware/errorHandler"
 import {PatientRepository} from './core/components/patient/repository'
 import {getRepository, MainDataSource} from './config/db/data-source'
 import {Patient} from './core/components/patient/entity'
@@ -25,6 +26,8 @@ async function main() {
 	app.get(`/${env.appName}/health`, (req, res) => {
 		return res.status(200).send()
 	})
+
+	app.use(errorHandler);
 
 	app.use("/acompanhamento", acompanhamentoRouter);
 	app.use("/consulta", consultaRouter);
