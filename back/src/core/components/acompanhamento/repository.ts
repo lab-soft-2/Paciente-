@@ -12,13 +12,13 @@ export class AcompanhamentoRepository {
 		}) ?? undefined
 	}
 
-	async findOneByEmail (email: string): Promise<Acompanhamento | undefined> {
-		return await this.db.findOne({
-			where: {
-				email
-			}
-		}) ?? undefined
-	}
+	// async findOneByEmail (email: string): Promise<Acompanhamento | undefined> {
+	// 	return await this.db.findOne({
+	// 		where: {
+	// 			email
+	// 		}
+	// 	}) ?? undefined
+	// }
 
 	async create (acompanhamento: Acompanhamento): Promise<Acompanhamento> {
 		return await this.db.save(acompanhamento)
