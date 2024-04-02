@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Api from '../../services/api';
 import { URL_PATHS } from '../../services/pathUrl';
+import Navbar from '../../components/navBar';
 
 const CadastroPaciente: React.FC = () => {
   const [nome, setNome] = useState('');
@@ -31,6 +32,7 @@ const CadastroPaciente: React.FC = () => {
 
   return (
     <>
+      <Navbar />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img

@@ -8,16 +8,12 @@ import Medico from './pages/medico'
 import ReceitaGuia from './pages/receita&guia'
 import PostarExames from './pages/postarExame';
 
+import Routes from './routes';
+
 function App() {
   return (
     <>
-    <Agenda />
-    <Cadastro />
-    <Consulta />
-    <Exame />
-    <Medico />
-    <ReceitaGuia />
-    <PostarExames />
+      <Routes />
     </>
   );
 }
