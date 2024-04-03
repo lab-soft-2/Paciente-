@@ -12,11 +12,13 @@ export class RelacionamentoRepository {
 		}) ?? undefined
 	}
 
-	async findOneByEmail (email: string): Promise<Relacionamento | undefined> {
-		return await this.db.query(`
-			SELECT * FROM relacionamentos WHERE email = $1
-		`, [email])
-	}
+	// async findOneByEmail (email: string): Promise<Relacionamento | undefined> {
+	// 	return await this.db.findOne({
+	// 		where: {
+	// 			email
+	// 		}
+	// 	}) ?? undefined
+	// }
 
 	async create (relacionamento: Relacionamento): Promise<Relacionamento> {
 		return await this.db.save(relacionamento)

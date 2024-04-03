@@ -17,7 +17,7 @@ export class Consulta {
     @Column({ nullable: false, type: 'varchar', length: 255 })
     	profissional: string
 
-	@Column({ nullable: false, type: 'varchar', length: 255, unique: true })
+	@Column({nullable: true, type: 'varchar', length: 255, unique: true })
     	documento?: string
 
     @CreateDateColumn()
@@ -26,8 +26,11 @@ export class Consulta {
     @UpdateDateColumn()
     	updated_at?: Date
 
-	@Column({ type: 'date' })
-    	fim?: string
+	@Column({ nullable: true, type: 'date' })
+    	inicio?: string
+
+	@Column({ nullable: true,type:'int'})
+    	duracao?: number
 
     @Column( { default: {}, type: 'jsonb' })
     	status?: string

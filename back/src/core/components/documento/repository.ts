@@ -12,13 +12,16 @@ export class DocumentoRepository {
 		}) ?? undefined
 	}
 
-	async findOneByEmail (email: string): Promise<Documento | undefined> {
-		return await this.db.query(`
-			SELECT * FROM documentos WHERE email = $1
-		`, [email])
+	async findAllByEmail (paciente: string): Promise<Documento[] | undefined> {
+		return await this.db.find({
+			where: {
+				paciente
+			}
+		}) ?? undefined
 	}
 
 	async create (documento: Documento): Promise<Documento> {
+		console.log(documento)
 		return await this.db.save(documento)
 	}
 

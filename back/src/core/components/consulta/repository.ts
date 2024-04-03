@@ -12,10 +12,20 @@ export class ConsultaRepository {
 		}) ?? undefined
 	}
 
-	async findOneByEmail (email: string): Promise<Consulta | undefined> {
-		return await this.db.query(`
-			SELECT * FROM consultas WHERE email = $1
-		`, [email])
+	async findAllByEmail (paciente: string): Promise<Consulta[] | undefined> {
+		return await this.db.find({
+			where: {
+				paciente
+			}
+		}) ?? undefined
+	}
+	
+	async findAllByEmailMedic (profissional: string): Promise<Consulta[] | undefined> {
+		return await this.db.find({
+			where: {
+				profissional
+			}
+		}) ?? undefined
 	}
 
 	async create (consulta: Consulta): Promise<Consulta> {
