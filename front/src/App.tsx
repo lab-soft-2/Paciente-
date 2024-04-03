@@ -10,41 +10,28 @@ import Medico from './pages/medico'
 import ReceitaGuia from './pages/receita&guia'
 import PostarExames from './pages/postarExame';
 import { auth } from './firebase-config'
-import { User } from 'firebase/auth'
+import { User, signInWithCustomToken } from 'firebase/auth'
 
 console.log("storage", localStorage)
 const timout = () => new Promise(resolve => setTimeout(resolve, 10_000))
 
-onAuthStateChanged(auth, async (user) => {
-  console.log(user)
-  await timout()
-  if (user) {
-    const storedToken = localStorage.getItem('userToken')
-    user.getIdToken().then((currentToken) => {
-      if (storedToken === currentToken) {
-        console.log("Acesso permitido")
-      } else {
-        window.location.href = 'https://auth-web-app-url.com'
-      }
-    });
-  } else {
-    window.location.href = 'https://auth-web-app-url.com'
-  }
-})
-
 function App() {
-  const [user, setUser] = useState<User | null >(null);
+  const [user, setUser] = useState<any | null >(null);
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const customToken = urlParams.get('token') ?? ''
+
 
   useEffect(() => {
-    onAuthStateChanged(auth, async (user) => {
+    signInWithCustomToken(auth, customToken).then((user) => {
+      console.log('aqui', user)
       if (user) {
         console.log("Usuário logado:", user);
         setUser(user);
       } else {
         console.log('empty')
-        await timout()
       }
-    });
+    })
   }, []);
 
   if (!user) {
