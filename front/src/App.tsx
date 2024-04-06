@@ -1,16 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
-
-import Agenda from './pages/agenda'
-import Cadastro from './pages/cadastro'
-import Consulta from './pages/consulta'
-import Exame from './pages/exame'
-import Medico from './pages/medico'
-import ReceitaGuia from './pages/receita&guia'
-import PostarExames from './pages/postarExame';
 import { auth } from './firebase-config'
 import { User, signInWithCustomToken } from 'firebase/auth'
+import Routes from './routes';
 
 console.log("storage", localStorage)
 const timout = () => new Promise(resolve => setTimeout(resolve, 10_000))
@@ -34,19 +26,13 @@ function App() {
     })
   }, []);
 
-  if (!user) {
+//  if (!user) {
     // Renderize algum tipo de tela de carregamento ou retorne null
-    return <div>Carregando...</div>;
-  }
+//    return <div>Carregando...</div>;
+//  }
   return (
     <>
-    <Agenda />
-    <Cadastro />
-    <Consulta />
-    <Exame />
-    <Medico />
-    <ReceitaGuia />
-    <PostarExames />
+    <Routes />
     </>
   );
 }
