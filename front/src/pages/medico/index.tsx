@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Api from '../../services/api'; // Importe a função de fazer requisições HTTP
 import { URL_PATHS } from '../../services/pathUrl'; // Verifique se o arquivo de caminhos está configurado corretamente
+import Navbar from '../../components/navBar';
 
 interface Consulta {
   emailMedico: string;
@@ -32,6 +33,8 @@ const VisualizarMedico: React.FC = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="py-8">
         <div className="pb-4">
@@ -70,6 +73,7 @@ const VisualizarMedico: React.FC = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 
