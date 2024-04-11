@@ -11,6 +11,7 @@ import { consultaRouter } from "./core/components/consulta/router";
 import { documentoRouter } from "./core/components/documento/router";
 import { patientRouter } from "./core/components/patient/router";
 import { relacionamentoRouter } from "./core/components/relacionamentos/router";
+import cors from 'cors';
 
 const PORT = env.serverPort
 const log = logger({ context: 'App' })
@@ -26,6 +27,8 @@ async function main() {
 	app.get(`/${env.appName}/health`, (req, res) => {
 		return res.status(200).send()
 	})
+
+	app.use(cors())
 
 	app.use(errorHandler);
 
