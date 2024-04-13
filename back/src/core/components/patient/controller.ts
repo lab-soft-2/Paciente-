@@ -32,6 +32,7 @@ export class PatientController {
         // patient.password = password
 
         repository.create(patient)
+        res.set('Access-Control-Allow-Origin', '*');
 
         return res
             .status(200)
@@ -45,7 +46,7 @@ export class PatientController {
         const repository = new PatientRepository(getRepository(Patient))
 
         const entity = await repository.findOneByEmail(email)
-
+        res.set('Access-Control-Allow-Origin', '*');
         return res.status(200).json(entity)
     }
 
@@ -54,7 +55,7 @@ export class PatientController {
         const repository = new PatientRepository(getRepository(Patient))
 
         const entity = await repository.findAll()
-
+        res.set('Access-Control-Allow-Origin', '*');
         return res.status(200).json(entity)
     }
 
@@ -65,7 +66,7 @@ export class PatientController {
         const repository = new PatientRepository(getRepository(Patient))
 
         const entity = await repository.deleteByEmail(email)
-
+        res.set('Access-Control-Allow-Origin', '*');
         return res.status(200).json(entity)
     }
 
@@ -82,8 +83,10 @@ export class PatientController {
         if (patient && newcondition) {
             patient.condition = newcondition
             repository.update(patient)
+            res.set('Access-Control-Allow-Origin', '*');
             return res.status(200).json(patient)
         }
+        res.set('Access-Control-Allow-Origin', '*');
         return res.status(400).json({ "erro": "paciente nao encontrado ou condicao nao enviada" })
     }
 
@@ -100,8 +103,10 @@ export class PatientController {
 
             // console.log(JSON.stringify(patient, null, "  "));
             repository.update(patient)
+            res.set('Access-Control-Allow-Origin', '*');
             return res.status(200).json(patient)
         }
+        res.set('Access-Control-Allow-Origin', '*');
         return res.status(400).json({ "erro": "paciente nao encontrado ou score nao enviado" })
     }
 
@@ -116,7 +121,7 @@ export class PatientController {
 
 
         repository.create(newDocumento)
-
+        res.set('Access-Control-Allow-Origin', '*');
         return res
             .status(200)
             .json({ message: "Documento created successfully", newDocumento });
@@ -142,7 +147,7 @@ export class PatientController {
             pacienteUpdate.condition = newcondition['paciente']
             repositoryPatient.create(pacienteUpdate)
         }
-
+        res.set('Access-Control-Allow-Origin', '*');
         return res
             .status(200)
             .json({ "Consulta finalizada ": {
@@ -166,8 +171,10 @@ export class PatientController {
 
 
         if (patient?.password == password) {
+            res.set('Access-Control-Allow-Origin', '*');
             return res.status(200).json(patient)
         }
+        res.set('Access-Control-Allow-Origin', '*');
         return res.status(400).json({ "erro": "Erro de autenticacao" })
     }
 
@@ -182,9 +189,11 @@ export class PatientController {
 
         if (documentos) {
             if (documentos.length > 0) {
+                res.set('Access-Control-Allow-Origin', '*');
                 return res.status(200).json(documentos)
             }
         }
+        res.set('Access-Control-Allow-Origin', '*');
         return res.status(400).json({ "erro": "Documentos nao encontrados" })
     }
 
@@ -198,9 +207,11 @@ export class PatientController {
         const consulta = await repository.findAllByEmail(email)
         if (consulta) {
             if (consulta.length > 0) {
+                res.set('Access-Control-Allow-Origin', '*');
                 return res.status(200).json(consulta)
             }
         }
+        res.set('Access-Control-Allow-Origin', '*');
         return res.status(400).json({ "erro": "consultas nao encontradas" })
     }
 
@@ -214,9 +225,11 @@ export class PatientController {
         const consulta = await repository.findAllByEmailMedic(email)
         if (consulta) {
             if (consulta.length > 0) {
+                res.set('Access-Control-Allow-Origin', '*');
                 return res.status(200).json(consulta)
             }
         }
+        res.set('Access-Control-Allow-Origin', '*');
         return res.status(400).json({ "erro": "consultas nao encontradas" })
     }
 
@@ -231,7 +244,7 @@ export class PatientController {
         novoexame.file = exame
 
         repository.create(novoexame)
-
+        res.set('Access-Control-Allow-Origin', '*');
         return res
             .status(200)
             .json({ message: "Exame created successfully", novoexame });
@@ -247,7 +260,7 @@ export class PatientController {
         
 
         const exames = await repository.findAllByEmail(email)
-
+        res.set('Access-Control-Allow-Origin', '*');
         return res
             .status(200)
             .json({ message: "Exame created successfully", exames });
@@ -265,7 +278,7 @@ export class PatientController {
         consulta.inicio = data.toDateString()
         consulta.duracao = duracao
         repository.create(consulta)
-
+        res.set('Access-Control-Allow-Origin', '*');
         return res
             .status(200)
             .json({ message: "Consulta created successfully", consulta });
@@ -282,8 +295,9 @@ export class PatientController {
 
 
         const resp = http.get({
-            hostname: 'localhost',
-            port: 3001,
+            hostname: process.env.MEDIC_SERVICE_HOST ?? 'localhost',
+            // 3001 é para testes locais
+            port: process.env.MEDIC_SERVICE_PORT ?? 3001,
             path: '/medico/user/all',
 
         }, (resp) => {
@@ -295,7 +309,7 @@ export class PatientController {
 
             // Toda a resposta foi recebida. Exibir o resultado.
             resp.on('end', () => {
-                console.log(data);
+                res.set('Access-Control-Allow-Origin', '*');
                 return res
                     .status(200).json(JSON.parse(data))
             });
