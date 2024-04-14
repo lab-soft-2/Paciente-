@@ -263,7 +263,7 @@ export class PatientController {
         res.set('Access-Control-Allow-Origin', '*');
         return res
             .status(200)
-            .json({ message: "Exame created successfully", exames });
+            .json({ message: "Exame listados:", exames });
     }
 
     static async patientPostConsulta(req: Request, res: Response) {
