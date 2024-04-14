@@ -25,7 +25,7 @@ ENV TYPEORM_USERNAME postgres
 ENV TYPEORM_PASSWORD "o+Ug,+#\enTF5#gN"
 ENV TYPEORM_DATABASE patient_db
 ENV TYPEORM_SYNCHRONIZE false
-ENV TYPEORM_ENTITIES dist/core/components/**/model.js
+ENV TYPEORM_ENTITIES dist/core/components/**/entity.js
 ENV TYPEORM_MIGRATIONS dist/core/db/migrations/**/*.js
 
 COPY --from=dependencies /app/node_modules ./node_modules
