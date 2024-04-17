@@ -300,7 +300,7 @@ export class PatientController {
             hostname: process.env.MEDIC_SERVICE_HOST ?? 'localhost',
             // 3001 é para testes locais
             port: process.env.MEDIC_SERVICE_PORT ?? 3001,
-            path: '/medico/user/all',
+            path: 'medico/user/all',
 
         }, (resp) => {
             let data = '';
