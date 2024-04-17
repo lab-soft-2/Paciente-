@@ -317,7 +317,7 @@ export class PatientController {
             });
 
         }).on("error", (err) => {
-            console.log("Error: " + err.message);
+            console.log("Error: " + err.message +"  "+ process.env.MEDIC_SERVICE_HOST+"  "+ process.env.MEDIC_SERVICE_PORT);
         })
     }
 
