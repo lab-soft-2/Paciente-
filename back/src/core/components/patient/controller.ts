@@ -275,7 +275,9 @@ export class PatientController {
 
         const consulta = new Consulta(medico, paciente);
 
-        consulta.inicio = data.toDateString()
+        const dataIni = new Date(data)
+
+        consulta.inicio = dataIni.toDateString()
         consulta.duracao = duracao
         repository.create(consulta)
         res.set('Access-Control-Allow-Origin', '*');
