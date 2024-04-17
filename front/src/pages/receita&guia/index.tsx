@@ -55,6 +55,7 @@ const VisualizarReceitaGuia: React.FC = () => {
         )}
         {consulta && (
           <div className="mt-4">
+            <h3 className="text-lg font-semibold text-gray-900">Receitas e Guias:</h3>
             <pre>{JSON.stringify(consulta, null, 2)}</pre>
           </div>
         )}

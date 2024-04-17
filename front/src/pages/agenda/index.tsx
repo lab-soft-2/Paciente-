@@ -63,6 +63,7 @@ const Agenda: React.FC = () => {
         )}
         {consultaJSON && (
           <div className="mt-4">
+            <h3 className="text-lg font-semibold text-gray-900">Agendamentos:</h3>
             <pre>{JSON.stringify(consultaJSON, null, 2)}</pre>
           </div>
         )}

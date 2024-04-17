@@ -97,26 +97,15 @@ const ConsultaPaciente: React.FC = () => {
         </button>
       </form>
       {/* Mostrar mensagem de erro */}
+      {consulta && (
+        <div className="mt-4">
+          <h3 className="text-lg font-semibold text-gray-900">Exame Postado com Sucesso:</h3>
+          <pre className="mt-2 p-4 bg-gray-100 rounded-md overflow-auto">{JSON.stringify(consulta, null, 2)}</pre>
+        </div>
+      )}
       {erroConsulta && (
         <div className="text-red-600 mt-4 text-center">
           {erroConsulta}
-        </div>
-      )}
-      {/* Mostrar consulta agendada */}
-      {consulta && (
-        <div className="mt-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Consulta Agendada</h2>
-          <div className="py-4">
-            <div className="flex justify-between">
-              <div>
-                <h3 className="text-lg font-medium text-gray-900">Consulta</h3>
-                <p className="text-sm text-gray-500">{`Paciente: ${consulta.paciente}`}</p>
-                <p className="text-sm text-gray-500">{`Médico: ${consulta.medico}`}</p>
-                <p className="text-sm text-gray-500">{`Data: ${new Date(consulta.data).toLocaleDateString()}`}</p>
-                <p className="text-sm text-gray-500">{`Duração: ${consulta.duracao} segundos`}</p>
-              </div>
-            </div>
-          </div>
         </div>
       )}
     </div>

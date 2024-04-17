@@ -48,6 +48,7 @@ const VisualizarMedico: React.FC = () => {
         )}
         {consulta && (
           <div className="mt-4">
+            <h3 className="text-lg font-semibold text-gray-900">Médicos:</h3>
             <pre>{JSON.stringify(consulta, null, 2)}</pre>
           </div>
         )}
