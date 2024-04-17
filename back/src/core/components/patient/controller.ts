@@ -297,9 +297,11 @@ export class PatientController {
 
 
         const resp = http.get({
-            hostname: process.env.MEDIC_SERVICE_HOST ?? 'localhost',
+            hostname: 'patient-service-lojv4wqana-uc.a.run.app',
+            // hostname: process.env.MEDIC_SERVICE_HOST ?? 'localhost',
             // 3001 é para testes locais
-            port: process.env.MEDIC_SERVICE_PORT ?? 3001,
+            // port: process.env.MEDIC_SERVICE_PORT ?? 3001,
+            port: 3000,
             path: '/medico/user/all',
 
         }, (resp) => {
