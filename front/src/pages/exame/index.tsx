@@ -41,7 +41,7 @@ const VisualizarExame: React.FC = () => {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="flex mb-4">
-            <input
+          <input
               type="email"
               className="border-gray-300 border rounded-md p-2 mr-2"
               placeholder="Email Paciente"
@@ -57,18 +57,11 @@ const VisualizarExame: React.FC = () => {
           </div>
         </form>
         {erroConsulta && (
-          <div className="text-red-600 mt-4">
-            {erroConsulta}
-          </div>
+          <div className="text-red-600 mt-4 text-center">{erroConsulta}</div>
         )}
         {consulta && (
-          <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div className="p-6">
-              <p className="text-lg font-semibold text-gray-900">Consulta</p>
-              <p className="text-sm text-gray-500">Email Médico: {consulta.emailMedico}</p>
-              <p className="text-sm text-gray-500">Data: {consulta.data}</p>
-              {/* Adicione mais informações da consulta conforme necessário */}
-            </div>
+          <div className="mt-4">
+            <pre>{JSON.stringify(consulta, null, 2)}</pre>
           </div>
         )}
       </div>
